@@ -64,7 +64,7 @@
             display: inline-block;
             padding: 20px;
             background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
-            border-radius: 50%;
+            border-radius: 35px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease;
         }
@@ -74,9 +74,9 @@
         }
 
         .main-photo img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
+            width: 280px;
+            height: 373px;
+            border-radius: 25px;
             object-fit: cover;
             border: 5px solid rgba(255, 255, 255, 0.8);
         }
@@ -140,8 +140,8 @@
 
         .memory-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-bottom: 60px;
         }
 
@@ -180,7 +180,7 @@
 
         .memory-card .month-photo {
             width: 100%;
-            height: 200px;
+            height: 280px;
             background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
             border-radius: 15px;
             margin-bottom: 20px;
@@ -191,6 +191,14 @@
             font-size: 1.1rem;
             text-align: center;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .memory-card .month-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
         }
 
         .memory-card .quote {
@@ -227,9 +235,19 @@
         .video-container {
             background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             display: inline-block;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+        }
+
+        .video-container video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 9/12;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .video-placeholder {
@@ -283,12 +301,146 @@
         }
 
         @media (max-width: 768px) {
-            .header h1 { font-size: 2.5rem; }
-            .header p { font-size: 1.2rem; }
-            .main-photo img { width: 250px; height: 250px; }
-            .birthday-wish { padding: 30px; }
-            .memory-grid { grid-template-columns: 1fr; }
-            .video-placeholder { width: 100%; max-width: 400px; height: 250px; }
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                margin-bottom: 40px;
+                padding: 30px 20px;
+            }
+            
+            .header h1 { 
+                font-size: 2.5rem; 
+            }
+            
+            .header p { 
+                font-size: 1.2rem; 
+            }
+            
+            .main-photo img { 
+                width: 240px; 
+                height: 320px; 
+            }
+            
+            .photo-frame {
+                padding: 15px;
+            }
+            
+            .birthday-wish { 
+                padding: 30px 20px;
+                margin: 40px 0;
+            }
+            
+            .birthday-wish h2 {
+                font-size: 2rem;
+            }
+            
+            .birthday-wish p {
+                font-size: 1.1rem;
+            }
+            
+            .memories-title {
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+            }
+            
+            .memory-grid { 
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .memory-card {
+                padding: 25px 20px;
+            }
+            
+            .memory-card .month-photo {
+                height: 260px;
+            }
+            
+            .video-section {
+                padding: 30px 20px;
+                margin: 60px 0;
+            }
+            
+            .video-section h2 {
+                font-size: 2rem;
+            }
+            
+            .video-container {
+                padding: 20px;
+            }
+            
+            .video-container video {
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 { 
+                font-size: 2rem; 
+            }
+            
+            .header p { 
+                font-size: 1rem; 
+            }
+            
+            .main-photo img { 
+                width: 200px; 
+                height: 267px; 
+            }
+            
+            .birthday-wish { 
+                padding: 25px 15px;
+            }
+            
+            .birthday-wish h2 {
+                font-size: 1.8rem;
+            }
+            
+            .birthday-wish p {
+                font-size: 1rem;
+            }
+            
+            .memories-title {
+                font-size: 1.8rem;
+            }
+            
+            .memory-card {
+                padding: 20px 15px;
+            }
+            
+            .memory-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .memory-card .month-photo {
+                height: 240px;
+            }
+            
+            .memory-card .quote {
+                font-size: 1rem;
+            }
+            
+            .memory-card .description {
+                font-size: 0.9rem;
+            }
+            
+            .video-section {
+                padding: 25px 15px;
+            }
+            
+            .video-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .video-container {
+                padding: 15px;
+            }
+            
+            .video-container video {
+                max-width: 240px;
+            }
         }
     </style>
 </head>
@@ -297,7 +449,7 @@
     
     <div class="container">
         <div class="header">
-            <h1>Happy Birthday My Partner! 💕</h1>
+            <h1>test 2 Happy Birthday My Partner! 💕</h1>
             <p>To the most beautiful soul in my life</p>
         </div>
 
@@ -428,7 +580,7 @@
         <div class="video-section">
             <h2>A Special Message For You 💝</h2>
             <div class="video-container">
-                <video width="500" height="300" controls style="border-radius: 15px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);">
+                <video controls>
                     <source src="photos/birthday-video.mp4" type="video/mp4">
                     <source src="photos/birthday-video.webm" type="video/webm">
                     Your browser does not support the video tag.
