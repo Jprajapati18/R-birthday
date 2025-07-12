@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 50%, #e6f3ff 100%);
+            min-height: 100vh;
+            color: #5a4a6a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #8b5a9f;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            color: #6b4c7a;
+            font-style: italic;
+        }
+
+        .main-photo {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .photo-frame {
+            display: inline-block;
+            padding: 20px;
+            background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .main-photo img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .birthday-wish {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 60px 0;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-wish::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 182, 217, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .birthday-wish h2 {
+            font-size: 2.5rem;
+            color: #8b5a9f;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .birthday-wish p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #5a4a6a;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .memories-section {
+            margin: 80px 0;
+        }
+
+        .memories-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #8b5a9f;
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffb6d9, #d4b5ff, #b3d9ff);
+        }
+
+        .memory-card h3 {
+            font-size: 1.5rem;
+            color: #8b5a9f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .memory-card .month-photo {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .memory-card .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #6b4c7a;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .memory-card .description {
+            font-size: 1rem;
+            color: #5a4a6a;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .video-section {
+            text-align: center;
+            margin: 80px 0;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 50px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-section h2 {
+            font-size: 2.5rem;
+            color: #8b5a9f;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+            border-radius: 20px;
+            padding: 40px;
+            display: inline-block;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-placeholder {
+            width: 500px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b5a9f;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #8b5a9f;
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 182, 217, 0.3);
+            font-size: 20px;
+            animation: float-heart 8s infinite linear;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .header p { font-size: 1.2rem; }
+            .main-photo img { width: 250px; height: 250px; }
+            .birthday-wish { padding: 30px; }
+            .memory-grid { grid-template-columns: 1fr; }
+            .video-placeholder { width: 100%; max-width: 400px; height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Happy Birthday My Partner! 💕</h1>
+            <p>To the most beautiful soul in my life</p>
+        </div>
+
+        <div class="main-photo">
+            <div class="photo-frame">
+                <img src="photos/main-photo.jpg" alt="My Beautiful Fiancé">
+            </div>
+        </div>
+
+        <div class="birthday-wish">
+            <h2>My Dearest Love 💖</h2>
+            <p>On this special day, I want you to know how incredibly blessed I feel to have you in my life. You are not just my fiancé, but my best friend, my confidant, and my greatest source of joy.</p>
+            
+            <p>Every moment with you feels like a beautiful dream that I never want to wake up from. Your smile lights up my darkest days, your laughter is the sweetest melody to my ears, and your love is the greatest gift I could ever receive.</p>
+            
+            <p>As we celebrate another year of your wonderful existence, I promise to love you more deeply, support you more strongly, and cherish every moment we share together. You deserve all the happiness in the world, and I'm honored to be the one trying to give it to you.</p>
+            
+            <p>Thank you for being the amazing person you are, for choosing to love me, and for making every day an adventure worth living. I can't wait to spend many more birthdays with you, creating beautiful memories and building our future together.</p>
+            
+            <p>Happy Birthday, my darling! Here's to another year of love, laughter, and endless possibilities. I love you more than words can express! 💕✨</p>
+        </div>
+
+        <div class="memories-section">
+            <h2 class="memories-title">Our Beautiful Journey Together 🌟</h2>
+            
+            <div class="memory-grid">
+                <div class="memory-card">
+                    <h3>August 2024 🌸</h3>
+                    <div class="month-photo">
+                        <img src="photos/august-2024.jpg" alt="August 2024 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day."</p>
+                    <p class="description">The month where our love story began to bloom even more beautifully. Every sunset we watched together painted the sky with promises of forever.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>September 2024 🍂</h3>
+                    <div class="month-photo">
+                        <img src="photos/september-2024.jpg" alt="September 2024 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"Autumn leaves don't fall, they fly. They take their time and wander on this, their only chance to soar."</p>
+                    <p class="description">As the leaves changed colors, so did my heart - falling deeper in love with you with each passing day. Your warmth made even the coolest days feel like summer.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>October 2024 🎃</h3>
+                    <div class="month-photo">
+                        <img src="photos/october-2024.jpg" alt="October 2024 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"Life is a party, and you're the reason I want to dance."</p>
+                    <p class="description">Halloween brought out your playful side, and I fell in love with your laughter all over again. Every moment with you felt like a celebration.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>November 2024 🦋</h3>
+                    <div class="month-photo">
+                        <img src="photos/november-2024.jpg" alt="November 2024 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"Gratitude makes sense of our past, brings peace for today, and creates a vision for tomorrow."</p>
+                    <p class="description">Thanksgiving month reminded me daily of how grateful I am for you. Your presence in my life is the greatest blessing I've ever received.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>December 2024 ❄️</h3>
+                    <div class="month-photo">
+                        <img src="photos/december-2024.jpg" alt="December 2024 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"The best way to spread Christmas cheer is singing loud for all to hear... but with you, just being together is enough."</p>
+                    <p class="description">The holiday season sparkled brighter with you by my side. Every twinkling light reminded me of the magic you bring to my life.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>January 2025 🌟</h3>
+                    <div class="month-photo">
+                        <img src="photos/january-2025.jpg" alt="January 2025 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"New year, new dreams, same incredible love."</p>
+                    <p class="description">Starting the new year with you felt like the beginning of our greatest adventure. Every resolution I made centered around loving you better.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>February 2025 💕</h3>
+                    <div class="month-photo">
+                        <img src="photos/february-2025.jpg" alt="February 2025 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"Love is friendship that has caught fire. It is quiet understanding, mutual confidence, sharing and forgiving."</p>
+                    <p class="description">Valentine's month, but every day with you feels like Valentine's Day. Your love is the poetry my heart has been waiting to hear.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>March 2025 🌺</h3>
+                    <div class="month-photo">
+                        <img src="photos/march-2025.jpg" alt="March 2025 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"In every walk with nature, one receives far more than they seek."</p>
+                    <p class="description">Spring brought new beginnings, and with you, every day feels like a fresh start filled with possibilities and hope.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>April 2025 🌈</h3>
+                    <div class="month-photo">
+                        <img src="photos/april-2025.jpg" alt="April 2025 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"April showers bring May flowers, but your love brings joy every hour."</p>
+                    <p class="description">Even the rainiest days felt sunny with you. Your optimism and joy are contagious, making every moment brighter.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>May 2025 🌻</h3>
+                    <div class="month-photo">
+                        <img src="photos/may-2025.jpg" alt="May 2025 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"Where flowers bloom, so does hope."</p>
+                    <p class="description">May brought beautiful blooms, but none as beautiful as your smile. Watching you discover joy in simple moments fills my heart with wonder.</p>
+                </div>
+
+                <div class="memory-card">
+                    <h3>June 2025 ☀️</h3>
+                    <div class="month-photo">
+                        <img src="photos/june-2025.jpg" alt="June 2025 Memory" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <p class="quote">"Summer afternoon—summer afternoon; to me those have always been the two most beautiful words in the English language."</p>
+                    <p class="description">As summer begins, I look forward to creating even more beautiful memories with you. The warmth of the season matches the warmth in my heart for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-section">
+            <h2>A Special Message For You 💝</h2>
+            <div class="video-container">
+                <video width="500" height="300" controls style="border-radius: 15px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);">
+                    <source src="photos/birthday-video.mp4" type="video/mp4">
+                    <source src="photos/birthday-video.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="footer">
+            Forever yours, with all my love 💕<br>
+            Happy Birthday, Beautiful! 🎂✨
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💕';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            heart.style.opacity = Math.random();
+            document.getElementById('hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 2000);
+
+        // Add some initial hearts
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 1000);
+        }
+
+        // Smooth scrolling for better experience
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
