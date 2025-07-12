@@ -94,6 +94,17 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .birthday-wish:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .birthday-wish.clicked {
+            cursor: default;
         }
 
         .birthday-wish::before {
@@ -127,6 +138,55 @@
             margin-bottom: 25px;
             position: relative;
             z-index: 1;
+        }
+
+        .letter-prompt {
+            font-size: 1.5rem;
+            color: #8b5a9f;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .letter-content {
+            display: none;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-content.active {
+            display: block;
+        }
+
+        .typewriter-text {
+            border-right: 3px solid #8b5a9f;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #8b5a9f; }
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            min-height: 1.5em;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-style: italic;
+            color: #8b5a9f;
+            font-size: 1.3rem;
+            margin-top: 40px;
         }
 
         .memories-section {
@@ -211,7 +271,6 @@
             transform: scale(1.05);
         }
 
-        /* Responsive image sizing based on aspect ratio */
         .memory-card .month-photo.landscape {
             height: 200px;
         }
@@ -362,6 +421,10 @@
                 font-size: 1.1rem;
             }
             
+            .letter-prompt {
+                font-size: 1.3rem;
+            }
+            
             .memories-title {
                 font-size: 2.2rem;
                 margin-bottom: 40px;
@@ -437,6 +500,10 @@
                 font-size: 1rem;
             }
             
+            .letter-prompt {
+                font-size: 1.2rem;
+            }
+            
             .memories-title {
                 font-size: 1.8rem;
             }
@@ -497,7 +564,7 @@
     
     <div class="container">
         <div class="header">
-            <h1>test 5 Happy Birthday My Partner! 💕</h1>
+            <h1>test 6 Happy Birthday My Partner! 💕</h1>
             <p>To the most beautiful soul in my life</p>
         </div>
 
@@ -507,17 +574,21 @@
             </div>
         </div>
 
-        <div class="birthday-wish">
+        <div class="birthday-wish" id="birthdayWish">
             <h2>My Dearest Love 💖</h2>
-            <p>On this special day, I want you to know how incredibly blessed I feel to have you in my life. You are not just my fiancé, but my best friend, my confidant, and my greatest source of joy.</p>
             
-            <p>Every moment with you feels like a beautiful dream that I never want to wake up from. Your smile lights up my darkest days, your laughter is the sweetest melody to my ears, and your love is the greatest gift I could ever receive.</p>
+            <div class="letter-prompt" id="letterPrompt">
+                💌 Click to read my heartfelt letter 💌
+            </div>
             
-            <p>As we celebrate another year of your wonderful existence, I promise to love you more deeply, support you more strongly, and cherish every moment we share together. You deserve all the happiness in the world, and I'm honored to be the one trying to give it to you.</p>
-            
-            <p>Thank you for being the amazing person you are, for choosing to love me, and for making every day an adventure worth living. I can't wait to spend many more birthdays with you, creating beautiful memories and building our future together.</p>
-            
-            <p>Happy Birthday, my darling! Here's to another year of love, laughter, and endless possibilities. I love you more than words can express! 💕✨</p>
+            <div class="letter-content" id="letterContent">
+                <p id="paragraph1"></p>
+                <p id="paragraph2"></p>
+                <p id="paragraph3"></p>
+                <p id="paragraph4"></p>
+                <p id="paragraph5"></p>
+                <div class="letter-signature" id="signature"></div>
+            </div>
         </div>
 
         <div class="memories-section">
@@ -632,6 +703,69 @@
     </div>
 
     <script>
+        // Letter content
+        const letterParagraphs = [
+            "On this special day, I want you to know how incredibly blessed I feel to have you in my life. You are not just my fiancé, but my best friend, my confidant, and my greatest source of joy.",
+            "Every moment with you feels like a beautiful dream that I never want to wake up from. Your smile lights up my darkest days, your laughter is the sweetest melody to my ears, and your love is the greatest gift I could ever receive.",
+            "As we celebrate another year of your wonderful existence, I promise to love you more deeply, support you more strongly, and cherish every moment we share together. You deserve all the happiness in the world, and I'm honored to be the one trying to give it to you.",
+            "Thank you for being the amazing person you are, for choosing to love me, and for making every day an adventure worth living. I can't wait to spend many more birthdays with you, creating beautiful memories and building our future together.",
+            "Happy Birthday, my darling! Here's to another year of love, laughter, and endless possibilities. I love you more than words can express! 💕✨"
+        ];
+
+        const signature = "Forever yours, with all my love 💕";
+
+        // Typewriter effect function
+        function typeWriter(element, text, speed = 50) {
+            return new Promise((resolve) => {
+                element.innerHTML = '';
+                element.classList.add('typewriter-text');
+                let i = 0;
+                
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        element.classList.remove('typewriter-text');
+                        resolve();
+                    }
+                }
+                type();
+            });
+        }
+
+        // Letter opening function
+        async function openLetter() {
+            const birthdayWish = document.getElementById('birthdayWish');
+            const letterPrompt = document.getElementById('letterPrompt');
+            const letterContent = document.getElementById('letterContent');
+            
+            // Hide prompt and show letter content
+            letterPrompt.style.display = 'none';
+            letterContent.classList.add('active');
+            birthdayWish.classList.add('clicked');
+            
+            // Type each paragraph with delays
+            for (let i = 0; i < letterParagraphs.length; i++) {
+                const paragraph = document.getElementById(`paragraph${i + 1}`);
+                await typeWriter(paragraph, letterParagraphs[i], 30);
+                await new Promise(resolve => setTimeout(resolve, 500)); // Pause between paragraphs
+            }
+            
+            // Type signature
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            const signatureElement = document.getElementById('signature');
+            await typeWriter(signatureElement, signature, 40);
+        }
+
+        // Add click event to birthday wish section
+        document.getElementById('birthdayWish').addEventListener('click', function() {
+            if (!this.classList.contains('clicked')) {
+                openLetter();
+            }
+        });
+
         // Create floating hearts animation
         function createHeart() {
             const heart = document.createElement('div');
