@@ -622,4 +622,268 @@
             .video-container video {
                 max-width: 240px;
             }
+         /* Add this CSS to your existing style.css file */
+
+.lanterns-section {
+    text-align: center;
+    margin: 80px 0;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.lanterns-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.2)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(255,255,255,0.15)"/><circle cx="70" cy="80" r="0.8" fill="rgba(255,255,255,0.12)"/><circle cx="30" cy="85" r="0.6" fill="rgba(255,255,255,0.18)"/></svg>') repeat;
+    animation: twinkle 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.lanterns-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.lanterns-section.clicked {
+    cursor: default;
+    min-height: 500px;
+}
+
+.lanterns-section h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.lanterns-section h2.clickable {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes glow {
+    0%, 100% { 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+    50% { 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.6);
+    }
+}
+
+.lanterns-prompt {
+    font-size: 1.3rem;
+    color: #ffd700;
+    font-style: italic;
+    margin-bottom: 0;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.lanterns-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.lanterns-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.lantern {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    cursor: pointer;
+    animation: float-up 12s ease-in-out infinite;
+    z-index: 10;
+}
+
+.lantern-body {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1);
+    border-radius: 15px 15px 25px 25px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+    animation: lantern-glow 3s ease-in-out infinite;
+}
+
+.lantern-body::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 8px;
+    background: #8b4513;
+    border-radius: 10px;
+}
+
+.lantern-body::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 15px solid #ffd93d;
+}
+
+.lantern-string {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #8b4513;
+}
+
+.lantern-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: flicker 2s ease-in-out infinite;
+}
+
+.lantern-message {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffd700;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.lantern:hover .lantern-message {
+    opacity: 1;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-500px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes lantern-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+    }
+    25% {
+        box-shadow: 0 0 30px rgba(255, 211, 61, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(107, 207, 127, 0.7);
+    }
+    75% {
+        box-shadow: 0 0 35px rgba(78, 205, 196, 0.6);
+    }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .lanterns-section {
+        padding: 30px 20px;
+        margin: 60px 0;
+        min-height: 350px;
+    }
+    
+    .lanterns-section h2 {
+        font-size: 2rem;
+    }
+    
+    .lanterns-content {
+        height: 350px;
+    }
+    
+    .lantern {
+        width: 50px;
+        height: 70px;
+    }
+    
+    .lantern-body {
+        height: 50px;
+    }
+    
+    .lantern-message {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lanterns-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .lanterns-content {
+        height: 300px;
+    }
+    
+    .lantern {
+        width: 40px;
+        height: 60px;
+    }
+    
+    .lantern-body {
+        height: 45px;
+    }
+}      
         }
