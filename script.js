@@ -96,6 +96,37 @@
                 }
             });
         });
+        const messages = [
+  "You smell nice 😌",
+  "I love your laugh 😂",
+  "Your eyes = magic ✨",
+  "You’re my safe place 💖",
+  "You look extra cute today 😍",
+  "I'd choose you again. And again. ♾️",
+  "You're the best part of my day ☀️",
+  "Even your sarcasm is adorable 😏",
+  "You make silence feel full 💫"
+];
+
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+  const size = Math.random() * 30 + 60;
+  bubble.style.width = size + 'px';
+  bubble.style.height = size + 'px';
+  bubble.style.left = Math.random() * (window.innerWidth - size) + 'px';
+  bubble.style.animationDuration = (Math.random() * 5 + 6) + 's';
+
+  document.body.appendChild(bubble);
+
+  setTimeout(() => {
+    bubble.remove();
+  }, 10000);
+}
+
+setInterval(createBubble, 1000);
 
         // Video section functionality
         document.getElementById('videoSection').addEventListener('click', function() {
