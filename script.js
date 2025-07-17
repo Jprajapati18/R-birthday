@@ -97,86 +97,118 @@
             });
         });
 
-// Growing Love Tree functionality
-const loveTreeStages = [
-    { id: 'stage1', delay: 0 },
-    { id: 'stage2', delay: 2000 },
-    { id: 'stage3', delay: 4000 },
-    { id: 'stage4', delay: 6000 },
-    { id: 'stage5', delay: 8000 }
+// Add this JavaScript to your existing script.js file
+
+// Love messages for lanterns
+const loveMessages = [
+    "You are my sunshine ☀️",
+    "Forever and always 💕",
+    "You make me complete 💫",
+    "My heart belongs to you 💖",
+    "You're my safe haven 🏠",
+    "Love you to the moon 🌙",
+    "You're my favorite person 😍",
+    "Together we're unstoppable 💪",
+    "You're my happy place 😊",
+    "My love for you is endless ♾️",
+    "You're my best friend 👫",
+    "You light up my world 🌟",
+    "I choose you every day 💝",
+    "You're my greatest adventure 🗺️",
+    "My heart smiles for you 😄"
 ];
 
-function createTreeHeart() {
-    const heart = document.createElement('div');
-    heart.className = 'tree-heart';
-    heart.innerHTML = '💕';
-    heart.style.left = (Math.random() * 80 + 10) + '%';
-    heart.style.bottom = (Math.random() * 50 + 20) + '%';
-    heart.style.animationDelay = Math.random() * 2 + 's';
-    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+// Lantern colors
+const lanternColors = [
+    'linear-gradient(135deg, #ff6b6b, #ff8e8e)',
+    'linear-gradient(135deg, #ffd93d, #ffed4a)',
+    'linear-gradient(135deg, #6bcf7f, #84e0a3)',
+    'linear-gradient(135deg, #4ecdc4, #67d4ce)',
+    'linear-gradient(135deg, #45b7d1, #64c5ea)',
+    'linear-gradient(135deg, #96ceb4, #b3dac7)',
+    'linear-gradient(135deg, #feca57, #ffd35a)',
+    'linear-gradient(135deg, #ff9ff3, #f68de3)',
+    'linear-gradient(135deg, #a8e6cf, #c4f0d2)',
+    'linear-gradient(135deg, #ffd3a5, #ffeaa7)'
+];
+
+// Create a single lantern
+function createLantern() {
+    const lantern = document.createElement('div');
+    lantern.className = 'lantern';
     
-    return heart;
+    // Random position
+    const leftPosition = Math.random() * (window.innerWidth - 100);
+    lantern.style.left = leftPosition + 'px';
+    lantern.style.bottom = '-100px';
+    
+    // Random delay
+    const delay = Math.random() * 2;
+    lantern.style.animationDelay = delay + 's';
+    
+    // Random color
+    const randomColor = lanternColors[Math.floor(Math.random() * lanternColors.length)];
+    
+    // Random message
+    const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+    
+    lantern.innerHTML = `
+        <div class="lantern-string"></div>
+        <div class="lantern-body" style="background: ${randomColor};">
+            <div class="lantern-light"></div>
+        </div>
+        <div class="lantern-message">${randomMessage}</div>
+    `;
+    
+    return lantern;
 }
 
-function startTreeGrowth() {
-    const treeContent = document.getElementById('treeContent');
-    const floatingHearts = document.getElementById('floatingHearts');
+// Launch lanterns function
+function launchLanterns() {
+    const lanternsContent = document.getElementById('lanternsContent');
     
-    // Show each stage with delay
-    loveTreeStages.forEach((stage, index) => {
+    // Create multiple lanterns with staggered timing
+    for (let i = 0; i < 8; i++) {
         setTimeout(() => {
-            // Hide previous stage
-            if (index > 0) {
-                document.getElementById(loveTreeStages[index - 1].id).classList.remove('active');
-            }
+            const lantern = createLantern();
+            lanternsContent.appendChild(lantern);
             
-            // Show current stage
-            document.getElementById(stage.id).classList.add('active');
-            
-            // Add floating hearts during growth
-            if (index >= 2) {
-                for (let i = 0; i < 3; i++) {
-                    setTimeout(() => {
-                        const heart = createTreeHeart();
-                        floatingHearts.appendChild(heart);
-                        
-                        // Remove heart after animation
-                        setTimeout(() => {
-                            if (heart.parentNode) {
-                                heart.parentNode.removeChild(heart);
-                            }
-                        }, 4000);
-                    }, i * 500);
+            // Remove lantern after animation completes
+            setTimeout(() => {
+                if (lantern.parentNode) {
+                    lantern.parentNode.removeChild(lantern);
                 }
-            }
-        }, stage.delay);
-    });
-    
-    // Continue adding hearts after tree is fully grown
-    setTimeout(() => {
-        const heartInterval = setInterval(() => {
-            if (treeContent.classList.contains('active')) {
-                const heart = createTreeHeart();
-                floatingHearts.appendChild(heart);
-                
-                setTimeout(() => {
-                    if (heart.parentNode) {
-                        heart.parentNode.removeChild(heart);
-                    }
-                }, 4000);
-            } else {
-                clearInterval(heartInterval);
-            }
-        }, 1500);
-    }, 10000);
+            }, 12000);
+        }, i * 1500); // Stagger each lantern by 1.5 seconds
+    }
 }
 
-// Love Tree section click functionality
-document.getElementById('loveTreeSection').addEventListener('click', function() {
+// Continuous lantern creation
+let lanternInterval;
+
+function startContinuousLanterns() {
+    lanternInterval = setInterval(() => {
+        const lanternsContent = document.getElementById('lanternsContent');
+        if (lanternsContent && lanternsContent.classList.contains('active')) {
+            const lantern = createLantern();
+            lanternsContent.appendChild(lantern);
+            
+            // Remove lantern after animation completes
+            setTimeout(() => {
+                if (lantern.parentNode) {
+                    lantern.parentNode.removeChild(lantern);
+                }
+            }, 12000);
+        }
+    }, 2000); // New lantern every 2 seconds
+}
+
+// Lanterns section click functionality
+document.getElementById('lanternsSection').addEventListener('click', function() {
     if (!this.classList.contains('clicked')) {
-        const content = this.querySelector('.tree-content');
+        const content = this.querySelector('.lanterns-content');
         const title = this.querySelector('h2');
-        const prompt = this.querySelector('.tree-prompt');
+        const prompt = this.querySelector('.lanterns-prompt');
         
         // Hide title pulse and prompt, show content
         title.classList.remove('clickable');
@@ -184,12 +216,18 @@ document.getElementById('loveTreeSection').addEventListener('click', function() 
         content.classList.add('active');
         this.classList.add('clicked');
         
-        // Start the tree growth animation
+        // Start the lantern show
         setTimeout(() => {
-            startTreeGrowth();
+            launchLanterns();
         }, 500);
+        
+        // Start continuous lanterns after initial batch
+        setTimeout(() => {
+            startContinuousLanterns();
+        }, 3000);
     }
 });
+
 // Clean up interval when page is unloaded
 window.addEventListener('beforeunload', function() {
     if (lanternInterval) {
