@@ -645,34 +645,452 @@
                 height: 200px;
             }
             
-            .lanterns-section {
-                padding: 30px 20px;
-                margin: 60px 0;
-                min-height: 350px;
-            }
-            
-            .lanterns-section h2 {
-                font-size: 2rem;
-            }
-            
-            .lanterns-content {
-                height: 350px;
-            }
-            
-            .lantern {
-                width: 50px;
-                height: 70px;
-            }
-            
-            .lantern-body {
-                height: 50px;
-            }
-            
-            .lantern-message {
-                font-size: 0.8rem;
-                padding: 6px 10px;
-            }
-        }
+/* Growing Love Tree Section */
+.love-tree-section {
+    text-align: center;
+    margin: 80px 0;
+    background: linear-gradient(135deg, #1a4a2e, #2d5a3d, #4a7c59);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-tree-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.love-tree-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.love-tree-section.clicked {
+    cursor: default;
+    min-height: 600px;
+}
+
+.love-tree-section h2 {
+    font-size: 2.5rem;
+    color: #90EE90;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.love-tree-section h2.clickable {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    animation: tree-glow 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes tree-glow {
+    0%, 100% { 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(144, 238, 144, 0.3);
+    }
+    50% { 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 30px rgba(144, 238, 144, 0.6);
+    }
+}
+
+.tree-prompt {
+    font-size: 1.3rem;
+    color: #90EE90;
+    font-style: italic;
+    margin-bottom: 0;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.tree-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.tree-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.tree-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.tree-stages {
+    position: relative;
+    width: 300px;
+    height: 400px;
+}
+
+.stage {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.stage.active {
+    opacity: 1;
+}
+
+/* Seed Stage */
+.seed-dot {
+    width: 8px;
+    height: 8px;
+    background: #8B4513;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    animation: seed-pulse 2s ease-in-out infinite;
+}
+
+@keyframes seed-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Sprout Stage */
+.sprout-stem {
+    width: 4px;
+    height: 30px;
+    background: #228B22;
+    margin: 0 auto;
+    border-radius: 2px;
+    animation: grow-up 2s ease-out;
+}
+
+.sprout-leaves {
+    width: 20px;
+    height: 15px;
+    background: #32CD32;
+    margin: -5px auto 0;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: leaf-appear 2s ease-out 0.5s both;
+}
+
+/* Sapling Stage */
+.sapling-trunk {
+    width: 8px;
+    height: 80px;
+    background: #8B4513;
+    margin: 0 auto;
+    border-radius: 4px;
+    animation: grow-up 2s ease-out;
+}
+
+.sapling-branches {
+    position: relative;
+    width: 60px;
+    height: 40px;
+    margin: -20px auto 0;
+}
+
+.sapling-branches::before,
+.sapling-branches::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: #228B22;
+    border-radius: 2px;
+    animation: branch-grow 2s ease-out 0.5s both;
+}
+
+.sapling-branches::before {
+    top: 10px;
+    left: 5px;
+    transform: rotate(-30deg);
+}
+
+.sapling-branches::after {
+    top: 10px;
+    right: 5px;
+    transform: rotate(30deg);
+}
+
+/* Young Tree Stage */
+.young-trunk {
+    width: 12px;
+    height: 120px;
+    background: #8B4513;
+    margin: 0 auto;
+    border-radius: 6px;
+    animation: grow-up 2s ease-out;
+}
+
+.young-branches {
+    position: relative;
+    width: 100px;
+    height: 60px;
+    margin: -30px auto 0;
+}
+
+.young-branches::before,
+.young-branches::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    background: #228B22;
+    border-radius: 2px;
+    animation: branch-grow 2s ease-out 0.5s both;
+}
+
+.young-branches::before {
+    top: 15px;
+    left: 0;
+    transform: rotate(-25deg);
+}
+
+.young-branches::after {
+    top: 15px;
+    right: 0;
+    transform: rotate(25deg);
+}
+
+.young-leaves {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    margin: -40px auto 0;
+}
+
+.young-leaves::before,
+.young-leaves::after {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #32CD32;
+    border-radius: 50%;
+    animation: leaf-appear 2s ease-out 1s both;
+}
+
+.young-leaves::before {
+    top: 20px;
+    left: 10px;
+}
+
+.young-leaves::after {
+    top: 20px;
+    right: 10px;
+}
+
+/* Full Tree Stage */
+.full-trunk {
+    width: 20px;
+    height: 180px;
+    background: #8B4513;
+    margin: 0 auto;
+    border-radius: 10px;
+    animation: grow-up 3s ease-out;
+}
+
+.full-branches {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    margin: -60px auto 0;
+}
+
+.full-branches::before,
+.full-branches::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 6px;
+    background: #228B22;
+    border-radius: 3px;
+    animation: branch-grow 3s ease-out 0.5s both;
+}
+
+.full-branches::before {
+    top: 30px;
+    left: 10px;
+    transform: rotate(-20deg);
+}
+
+.full-branches::after {
+    top: 30px;
+    right: 10px;
+    transform: rotate(20deg);
+}
+
+.full-leaves {
+    position: relative;
+    width: 220px;
+    height: 150px;
+    margin: -80px auto 0;
+}
+
+.full-leaves::before,
+.full-leaves::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #32CD32;
+    border-radius: 50%;
+    animation: leaf-appear 3s ease-out 1s both;
+}
+
+.full-leaves::before {
+    top: 40px;
+    left: 20px;
+}
+
+.full-leaves::after {
+    top: 40px;
+    right: 20px;
+}
+
+.tree-flowers {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 30px;
+    animation: flower-bloom 2s ease-out 2s both;
+}
+
+.tree-flowers::before,
+.tree-flowers::after {
+    content: '🌸';
+    position: absolute;
+    font-size: 20px;
+    animation: flower-float 3s ease-in-out infinite;
+}
+
+.tree-flowers::before {
+    left: 10px;
+    animation-delay: 0s;
+}
+
+.tree-flowers::after {
+    right: 10px;
+    animation-delay: 1s;
+}
+
+.love-note {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #2d5a3d;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: note-appear 1s ease-out 2s both;
+}
+
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.tree-heart {
+    position: absolute;
+    color: #ff69b4;
+    font-size: 16px;
+    animation: heart-float 4s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes grow-up {
+    0% { height: 0; }
+    100% { height: var(--target-height, 100px); }
+}
+
+@keyframes branch-grow {
+    0% { width: 0; }
+    100% { width: var(--target-width, 40px); }
+}
+
+@keyframes leaf-appear {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flower-bloom {
+    0% { opacity: 0; transform: translateX(-50%) scale(0); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+@keyframes flower-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes note-appear {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes heart-float {
+    0% { opacity: 0; transform: translateY(0); }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-100px); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .love-tree-section {
+        padding: 30px 20px;
+        min-height: 350px;
+    }
+    
+    .love-tree-section h2 {
+        font-size: 2rem;
+    }
+    
+    .tree-content {
+        height: 400px;
+    }
+    
+    .tree-stages {
+        width: 250px;
+        height: 350px;
+    }
+    
+    .love-note {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
 
         @media (max-width: 480px) {
             .header h1 { 
