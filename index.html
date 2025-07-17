@@ -842,6 +842,211 @@
                 font-size: 0.9rem;
             }
         }
+    <!-- ADD THIS CSS TO YOUR EXISTING <style> SECTION -->
+
+.flower-garden-section {
+    margin: 80px 0;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 50px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.garden-title {
+    font-size: 2.8rem;
+    color: #8b5a9f;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.garden-subtitle {
+    font-size: 1.3rem;
+    color: #6b4c7a;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.garden-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    min-height: 300px;
+}
+
+.flower {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.flower:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.flower.bloomed {
+    opacity: 1;
+    animation: bloom 0.8s ease-out;
+}
+
+@keyframes bloom {
+    0% { 
+        transform: scale(0.5) rotate(-10deg); 
+        opacity: 0.3;
+    }
+    50% { 
+        transform: scale(1.2) rotate(5deg); 
+        opacity: 0.8;
+    }
+    100% { 
+        transform: scale(1) rotate(0deg); 
+        opacity: 1;
+    }
+}
+
+.flower-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.flower-label {
+    font-size: 1.1rem;
+    color: #8b5a9f;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.flower-count {
+    font-size: 0.9rem;
+    color: #6b4c7a;
+    opacity: 0.8;
+}
+
+.flower-message {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    color: #5a4a6a;
+    white-space: nowrap;
+    max-width: 250px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.flower-message.show {
+    opacity: 1;
+    bottom: -80px;
+}
+
+.flower-message::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(255, 255, 255, 0.95);
+}
+
+.garden-progress {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.progress-text {
+    font-size: 1.2rem;
+    color: #8b5a9f;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ffb6d9, #d4b5ff);
+    width: 0%;
+    transition: width 0.8s ease;
+    border-radius: 4px;
+}
+
+.garden-complete {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+    border-radius: 15px;
+    color: white;
+    font-size: 1.1rem;
+    animation: celebration 2s ease-in-out;
+}
+
+@keyframes celebration {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.garden-complete.show {
+    display: block;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .garden-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .flower-icon {
+        font-size: 3rem;
+    }
+    
+    .flower-message {
+        max-width: 200px;
+        font-size: 0.9rem;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .garden-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .flower-icon {
+        font-size: 2.5rem;
+    }
+    
+    .flower-message {
+        max-width: 180px;
+        font-size: 0.8rem;
+    }
+}
+  
     </style>
 </head>
 <body>
@@ -1014,6 +1219,66 @@
                 
             </div>
         </div>
+
+<div class="flower-garden-section">
+    <h2 class="garden-title">My Garden of Love 🌺</h2>
+    <p class="garden-subtitle">Click each flower to see why you're so special to me</p>
+    
+    <div class="garden-container">
+        <div class="flower" data-type="rose" data-clicked="0">
+            <span class="flower-icon">🌹</span>
+            <div class="flower-label">Roses</div>
+            <div class="flower-count">Click to bloom</div>
+            <div class="flower-message"></div>
+        </div>
+        
+        <div class="flower" data-type="sunflower" data-clicked="0">
+            <span class="flower-icon">🌻</span>
+            <div class="flower-label">Sunflowers</div>
+            <div class="flower-count">Click to bloom</div>
+            <div class="flower-message"></div>
+        </div>
+        
+        <div class="flower" data-type="daisy" data-clicked="0">
+            <span class="flower-icon">🌼</span>
+            <div class="flower-label">Daisies</div>
+            <div class="flower-count">Click to bloom</div>
+            <div class="flower-message"></div>
+        </div>
+        
+        <div class="flower" data-type="tulip" data-clicked="0">
+            <span class="flower-icon">🌷</span>
+            <div class="flower-label">Tulips</div>
+            <div class="flower-count">Click to bloom</div>
+            <div class="flower-message"></div>
+        </div>
+        
+        <div class="flower" data-type="cherry" data-clicked="0">
+            <span class="flower-icon">🌸</span>
+            <div class="flower-label">Cherry Blossoms</div>
+            <div class="flower-count">Click to bloom</div>
+            <div class="flower-message"></div>
+        </div>
+        
+        <div class="flower" data-type="lotus" data-clicked="0">
+            <span class="flower-icon">🪷</span>
+            <div class="flower-label">Lotus</div>
+            <div class="flower-count">Click to bloom</div>
+            <div class="flower-message"></div>
+        </div>
+    </div>
+    
+    <div class="garden-progress">
+        <div class="progress-text">Garden Progress: <span id="progressCount">0</span>/6 flowers bloomed</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="garden-complete" id="gardenComplete">
+            🌺 Your garden is fully bloomed! Just like my love for you grows more beautiful each day! 🌺
+        </div>
+    </div>
+</div>
+        
 <div class="coupons-section" id="couponsSection">
     <h2 class="clickable">Special Love Coupons For You 🎫</h2>
     <p class="coupons-prompt">💝 Click to reveal your redeemable love coupons 💝</p>
@@ -1312,6 +1577,147 @@
             });
         });
 
+        // Flower garden messages
+const flowerMessages = {
+    rose: [
+        "I love you because your smile lights up my entire world",
+        "I love you because you make every ordinary day feel magical",
+        "I love you because your laugh is my favorite sound",
+        "I love you because you see the best in everyone, especially me",
+        "I love you because you love me exactly as I am"
+    ],
+    sunflower: [
+        "You brighten my day when you send me good morning texts",
+        "You brighten my day when you dance around the kitchen",
+        "You brighten my day when you tell me about your dreams",
+        "You brighten my day when you surprise me with little kisses",
+        "You brighten my day when you simply exist in my world"
+    ],
+    daisy: [
+        "My favorite thing about you is your incredible kindness",
+        "My favorite thing about you is how you make me laugh",
+        "My favorite thing about you is your beautiful, caring heart",
+        "My favorite thing about you is how you make me feel safe",
+        "My favorite thing about you is your amazing strength"
+    ],
+    tulip: [
+        "You inspire me to be a better person every single day",
+        "You inspire me to chase my dreams fearlessly",
+        "You inspire me to love more deeply and freely",
+        "You inspire me to see beauty in the smallest moments",
+        "You inspire me to believe in our beautiful future together"
+    ],
+    cherry: [
+        "You're beautiful when you're concentrating on something you love",
+        "You're beautiful when you're being silly and carefree",
+        "You're beautiful when you're passionate about your dreams",
+        "You're beautiful when you're taking care of others",
+        "You're beautiful in every single moment, inside and out"
+    ],
+    lotus: [
+        "You make me feel peaceful when you hold my hand",
+        "You make me feel peaceful when we talk about our future",
+        "You make me feel peaceful when you rest your head on my shoulder",
+        "You make me feel peaceful when we're just together in silence",
+        "You make me feel peaceful knowing you're mine forever"
+    ]
+};
+
+// Flower garden functionality
+function initializeFlowerGarden() {
+    const flowers = document.querySelectorAll('.flower');
+    const progressCount = document.getElementById('progressCount');
+    const progressFill = document.getElementById('progressFill');
+    const gardenComplete = document.getElementById('gardenComplete');
+    
+    let totalClicked = 0;
+    const totalFlowers = flowers.length;
+    
+    flowers.forEach(flower => {
+        flower.addEventListener('click', function() {
+            const type = this.getAttribute('data-type');
+            let clicked = parseInt(this.getAttribute('data-clicked'));
+            const messages = flowerMessages[type];
+            const messageElement = this.querySelector('.flower-message');
+            const countElement = this.querySelector('.flower-count');
+            
+            if (clicked < messages.length) {
+                // Show message
+                messageElement.textContent = messages[clicked];
+                messageElement.classList.add('show');
+                
+                // Update flower state
+                this.classList.add('bloomed');
+                clicked++;
+                this.setAttribute('data-clicked', clicked);
+                
+                // Update count display
+                if (clicked < messages.length) {
+                    countElement.textContent = `${clicked}/${messages.length} bloomed`;
+                } else {
+                    countElement.textContent = 'Fully bloomed! 🌺';
+                    if (clicked === messages.length) {
+                        totalClicked++;
+                        updateProgress();
+                    }
+                }
+                
+                // Hide message after 3 seconds
+                setTimeout(() => {
+                    messageElement.classList.remove('show');
+                }, 3000);
+                
+                // Add celebration effect
+                this.style.animation = 'bloom 0.8s ease-out';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 800);
+            }
+        });
+    });
+    
+    function updateProgress() {
+        progressCount.textContent = totalClicked;
+        const progressPercentage = (totalClicked / totalFlowers) * 100;
+        progressFill.style.width = progressPercentage + '%';
+        
+        if (totalClicked === totalFlowers) {
+            setTimeout(() => {
+                gardenComplete.classList.add('show');
+                createCelebrationEffect();
+            }, 500);
+        }
+    }
+    
+    function createCelebrationEffect() {
+        // Create floating flowers effect
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                const celebrationFlower = document.createElement('div');
+                celebrationFlower.innerHTML = ['🌸', '🌺', '🌻', '🌷', '🌹'][Math.floor(Math.random() * 5)];
+                celebrationFlower.style.position = 'fixed';
+                celebrationFlower.style.left = Math.random() * 100 + '%';
+                celebrationFlower.style.top = '100vh';
+                celebrationFlower.style.fontSize = '2rem';
+                celebrationFlower.style.pointerEvents = 'none';
+                celebrationFlower.style.zIndex = '1000';
+                celebrationFlower.style.animation = 'float-heart 4s linear forwards';
+                
+                document.body.appendChild(celebrationFlower);
+                
+                setTimeout(() => {
+                    celebrationFlower.remove();
+                }, 4000);
+            }, i * 100);
+        }
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    // ... your existing DOMContentLoaded code ...
+    
+    // Add this line to initialize the flower garden
+    initializeFlowerGarden();
+});
         // Smooth scrolling for better experience
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
