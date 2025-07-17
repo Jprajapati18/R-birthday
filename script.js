@@ -334,14 +334,35 @@ class SpinWheel {
 }
 
 // Initialize the wheel when the page loads
+// Initialize the wheel when the page loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize existing functionality first
-    // ... (your existing DOMContentLoaded code)
-    
     // Initialize the spin wheel
     new SpinWheel();
+    
+    // Your existing image aspect ratio code
+    const images = document.querySelectorAll('.month-photo img');
+    
+    images.forEach(img => {
+        img.onload = function() {
+            const aspectRatio = this.naturalWidth / this.naturalHeight;
+            const photoContainer = this.parentElement;
+            
+            photoContainer.classList.remove('landscape', 'portrait', 'square');
+            
+            if (aspectRatio > 1.3) {
+                photoContainer.classList.add('landscape');
+            } else if (aspectRatio < 0.8) {
+                photoContainer.classList.add('portrait');
+            } else {
+                photoContainer.classList.add('square');
+            }
+        };
+        
+        if (img.complete) {
+            img.onload();
+        }
+    });
 });
-
         // Detect image aspect ratio and apply appropriate class
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.month-photo img');
