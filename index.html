@@ -629,6 +629,219 @@
                 max-width: 240px;
             }
         }
+
+        .coupons-section {
+            text-align: center;
+            margin: 80px 0;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 50px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .coupons-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .coupons-section.clicked {
+            cursor: default;
+            min-height: auto;
+        }
+
+        .coupons-section h2 {
+            font-size: 2.5rem;
+            color: #8b5a9f;
+            margin-bottom: 30px;
+        }
+
+        .coupons-section h2.clickable {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .coupons-prompt {
+            font-size: 1.3rem;
+            color: #8b5a9f;
+            font-style: italic;
+            margin-bottom: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .coupons-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .coupons-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .coupons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .coupon-card {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            cursor: pointer;
+            perspective: 1000px;
+            transition: transform 0.3s ease;
+        }
+
+        .coupon-card:hover {
+            transform: scale(1.05);
+        }
+
+        .coupon-front, .coupon-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .coupon-front {
+            background: linear-gradient(135deg, #ffb6d9 0%, #d4b5ff 100%);
+            color: white;
+            transform: rotateY(0deg);
+        }
+
+        .coupon-back {
+            background: linear-gradient(135deg, #98fb98 0%, #87ceeb 100%);
+            color: #2c5530;
+            transform: rotateY(180deg);
+        }
+
+        .coupon-card.redeemed .coupon-front {
+            transform: rotateY(-180deg);
+        }
+
+        .coupon-card.redeemed .coupon-back {
+            transform: rotateY(0deg);
+        }
+
+        .coupon-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .coupon-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .coupon-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .coupon-click-hint {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.8;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .redeemed-stamp {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c5530;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border: 2px solid #2c5530;
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .redeem-message {
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.5;
+            color: #2c5530;
+        }
+
+        @media (max-width: 768px) {
+            .coupons-section {
+                padding: 30px 20px;
+                margin: 60px 0;
+            }
+            
+            .coupons-section h2 {
+                font-size: 2rem;
+            }
+            
+            .coupons-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .coupon-card {
+                height: 180px;
+            }
+            
+            .coupon-icon {
+                font-size: 2.5rem;
+            }
+            
+            .coupon-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coupons-section {
+                padding: 25px 15px;
+            }
+            
+            .coupons-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .coupon-card {
+                height: 160px;
+            }
+            
+            .coupon-icon {
+                font-size: 2rem;
+            }
+            
+            .coupon-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .coupon-subtitle {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -801,25 +1014,92 @@
                 
             </div>
         </div>
+<div class="coupons-section" id="couponsSection">
+    <h2 class="clickable">Special Love Coupons For You 🎫</h2>
+    <p class="coupons-prompt">💝 Click to reveal your redeemable love coupons 💝</p>
+    <div class="coupons-content">
+        <div class="coupons-grid">
+            <div class="coupon-card" data-coupon="breakfast">
+                <div class="coupon-front">
+                    <div class="coupon-icon">🍳</div>
+                    <h3>Breakfast in Bed</h3>
+                    <p class="coupon-subtitle">Start your day like a queen</p>
+                    <div class="coupon-click-hint">Click to redeem</div>
+                </div>
+                <div class="coupon-back">
+                    <div class="redeemed-stamp">REDEEMED ✓</div>
+                    <p class="redeem-message">Your breakfast in bed is reserved! Just let me know when you want to use this special treat. 💕</p>
+                </div>
+            </div>
 
-        <div class="video-section" id="videoSection">
-            <h2 class="clickable">A Special Message For You 💝</h2>
-            <p class="video-prompt">🎬 Click to watch my special video message 🎬</p>
-            <div class="video-content">
-                <div class="video-container">
-                    <video controls>
-                        <source src="photos/birthday-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+            <div class="coupon-card" data-coupon="movie">
+                <div class="coupon-front">
+                    <div class="coupon-icon">🎬</div>
+                    <h3>Movie Night</h3>
+                    <p class="coupon-subtitle">Your choice, our cozy night</p>
+                    <div class="coupon-click-hint">Click to redeem</div>
+                </div>
+                <div class="coupon-back">
+                    <div class="redeemed-stamp">REDEEMED ✓</div>
+                    <p class="redeem-message">Pick any movie you want! I'll arrange the perfect cozy movie night just for us. 🍿</p>
+                </div>
+            </div>
+
+            <div class="coupon-card" data-coupon="date">
+                <div class="coupon-front">
+                    <div class="coupon-icon">💑</div>
+                    <h3>Surprise Date</h3>
+                    <p class="coupon-subtitle">Planned with love, just for you</p>
+                    <div class="coupon-click-hint">Click to redeem</div>
+                </div>
+                <div class="coupon-back">
+                    <div class="redeemed-stamp">REDEEMED ✓</div>
+                    <p class="redeem-message">A surprise date awaits you! I'll plan every detail to make it perfect and memorable. ✨</p>
+                </div>
+            </div>
+
+            <div class="coupon-card" data-coupon="massage">
+                <div class="coupon-front">
+                    <div class="coupon-icon">💆‍♀️</div>
+                    <h3>Relaxing Massage</h3>
+                    <p class="coupon-subtitle">Melt your stress away</p>
+                    <div class="coupon-click-hint">Click to redeem</div>
+                </div>
+                <div class="coupon-back">
+                    <div class="redeemed-stamp">REDEEMED ✓</div>
+                    <p class="redeem-message">A soothing massage session is yours! Let me take care of you and help you relax completely. 🌸</p>
+                </div>
+            </div>
+
+            <div class="coupon-card" data-coupon="cooking">
+                <div class="coupon-front">
+                    <div class="coupon-icon">👨‍🍳</div>
+                    <h3>Home-Cooked Meal</h3>
+                    <p class="coupon-subtitle">Your favorite dish, made with love</p>
+                    <div class="coupon-click-hint">Click to redeem</div>
+                </div>
+                <div class="coupon-back">
+                    <div class="redeemed-stamp">REDEEMED ✓</div>
+                    <p class="redeem-message">Your favorite home-cooked meal is coming! Tell me what you're craving and I'll make it perfectly. 🍽️</p>
+                </div>
+            </div>
+
+            <div class="coupon-card" data-coupon="adventure">
+                <div class="coupon-front">
+                    <div class="coupon-icon">🌟</div>
+                    <h3>Adventure Day</h3>
+                    <p class="coupon-subtitle">Let's explore something new</p>
+                    <div class="coupon-click-hint">Click to redeem</div>
+                </div>
+                <div class="coupon-back">
+                    <div class="redeemed-stamp">REDEEMED ✓</div>
+                    <p class="redeem-message">An adventure awaits us! Whether it's exploring a new place or trying something exciting together. 🗺️</p>
                 </div>
             </div>
         </div>
-
-        <div class="footer">
-            Forever yours, with all my love 💕<br>
-            Happy Birthday, Beautiful! 🎂✨
-        </div>
     </div>
+</div>
+ 
 
     <script>
         // Letter content
@@ -920,13 +1200,12 @@
                 }
             });
         });
-
-        // Video section functionality
-        document.getElementById('videoSection').addEventListener('click', function() {
-            if (!this.classList.contains('clicked')) {
-                const content = this.querySelector('.video-content');
+        // Coupons section functionality
+        document.getElementById('couponsSection').addEventListener('click', function(e) {
+            if (!this.classList.contains('clicked') && !e.target.closest('.coupon-card')) {
+                const content = this.querySelector('.coupons-content');
                 const title = this.querySelector('h2');
-                const prompt = this.querySelector('.video-prompt');
+                const prompt = this.querySelector('.coupons-prompt');
                 
                 // Hide title pulse and prompt, show content
                 title.classList.remove('clickable');
@@ -935,6 +1214,51 @@
                 this.classList.add('clicked');
             }
         });
+
+        // Individual coupon cards functionality
+        document.querySelectorAll('.coupon-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent triggering the parent click
+                
+                if (!this.classList.contains('redeemed')) {
+                    this.classList.add('redeemed');
+                    
+                    // Add a small celebration effect
+                    const celebration = document.createElement('div');
+                    celebration.innerHTML = '🎉';
+                    celebration.style.position = 'absolute';
+                    celebration.style.top = '10px';
+                    celebration.style.right = '10px';
+                    celebration.style.fontSize = '2rem';
+                    celebration.style.zIndex = '10';
+                    celebration.style.animation = 'bounce 0.5s ease-in-out';
+                    
+                    this.appendChild(celebration);
+                    
+                    setTimeout(() => {
+                        celebration.remove();
+                    }, 1000);
+                }
+            });
+        });
+
+        // Add bounce animation for celebration
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-20px);
+                }
+                60% {
+                    transform: translateY(-10px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+       
 
         // Create floating hearts animation
         function createHeart() {
