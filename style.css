@@ -1,0 +1,506 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 50%, #e6f3ff 100%);
+            min-height: 100vh;
+            color: #5a4a6a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            color: #8b5a9f;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            color: #6b4c7a;
+            font-style: italic;
+        }
+
+        .main-photo {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .photo-frame {
+            display: inline-block;
+            padding: 20px;
+            background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+            border-radius: 35px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .main-photo img {
+            max-width: 350px;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            border-radius: 25px;
+            object-fit: contain;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            display: block;
+        }
+
+        .birthday-wish {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 60px 0;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .birthday-wish:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .birthday-wish.clicked {
+            cursor: default;
+        }
+
+        .birthday-wish::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 182, 217, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .birthday-wish h2 {
+            font-size: 2.5rem;
+            color: #8b5a9f;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .birthday-wish p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #5a4a6a;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-prompt {
+            font-size: 1.5rem;
+            color: #8b5a9f;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .letter-content {
+            display: none;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-content.active {
+            display: block;
+        }
+
+        .typewriter-text {
+            border-right: 3px solid #8b5a9f;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #8b5a9f; }
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            min-height: 1.5em;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-style: italic;
+            color: #8b5a9f;
+            font-size: 1.3rem;
+            margin-top: 40px;
+        }
+
+        .memories-section {
+            margin: 80px 0;
+        }
+
+        .memories-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #8b5a9f;
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-card.clicked {
+            cursor: default;
+            min-height: auto;
+            display: block;
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffb6d9, #d4b5ff, #b3d9ff);
+        }
+
+        .memory-card h3 {
+            font-size: 1.5rem;
+            color: #8b5a9f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .memory-card h3.clickable {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            animation: pulse 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .memory-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .memory-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .memory-card .month-photo {
+            width: 100%;
+            min-height: 250px;
+            max-height: 350px;
+            background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .memory-card .month-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card .month-photo:hover img {
+            transform: scale(1.05);
+        }
+
+        .memory-card .month-photo.landscape {
+            height: 200px;
+        }
+
+        .memory-card .month-photo.portrait {
+            height: 300px;
+        }
+
+        .memory-card .month-photo.square {
+            height: 250px;
+        }
+
+        .memory-card .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #6b4c7a;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .memory-card .description {
+            font-size: 1rem;
+            color: #5a4a6a;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #8b5a9f;
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 182, 217, 0.3);
+            font-size: 20px;
+            animation: float-heart 8s infinite linear;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                margin-bottom: 40px;
+                padding: 30px 20px;
+            }
+            
+            .header h1 { 
+                font-size: 2.5rem; 
+            }
+            
+            .header p { 
+                font-size: 1.2rem; 
+            }
+            
+            .main-photo img { 
+                max-width: 280px;
+                max-height: 400px;
+            }
+            
+            .photo-frame {
+                padding: 15px;
+            }
+            
+            .birthday-wish { 
+                padding: 30px 20px;
+                margin: 40px 0;
+            }
+            
+            .birthday-wish h2 {
+                font-size: 2rem;
+            }
+            
+            .birthday-wish p {
+                font-size: 1.1rem;
+            }
+            
+            .letter-prompt {
+                font-size: 1.3rem;
+            }
+            
+            .memories-title {
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+            }
+            
+            .memory-grid { 
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .memory-card {
+                padding: 25px 20px;
+            }
+            
+            .memory-card .month-photo {
+                min-height: 200px;
+                max-height: 280px;
+            }
+            
+            .memory-card .month-photo.landscape {
+                height: 180px;
+            }
+
+            .memory-card .month-photo.portrait {
+                height: 240px;
+            }
+
+            .memory-card .month-photo.square {
+                height: 200px;
+            }
+            
+           
+        }
+
+        @media (max-width: 480px) {
+            .header h1 { 
+                font-size: 2rem; 
+            }
+            
+            .header p { 
+                font-size: 1rem; 
+            }
+            
+            .main-photo img { 
+                max-width: 240px;
+                max-height: 320px;
+            }
+            
+            .birthday-wish { 
+                padding: 25px 15px;
+            }
+            
+            .birthday-wish h2 {
+                font-size: 1.8rem;
+            }
+            
+            .birthday-wish p {
+                font-size: 1rem;
+            }
+            
+            .letter-prompt {
+                font-size: 1.2rem;
+            }
+            
+            .memories-title {
+                font-size: 1.8rem;
+            }
+            
+            .memory-card {
+                padding: 20px 15px;
+            }
+            
+            .memory-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .memory-card .month-photo {
+                min-height: 180px;
+                max-height: 250px;
+            }
+            
+            .memory-card .month-photo.landscape {
+                height: 160px;
+            }
+
+            .memory-card .month-photo.portrait {
+                height: 220px;
+            }
+
+            .memory-card .month-photo.square {
+                height: 180px;
+            }
+            
+            .memory-card .quote {
+                font-size: 1rem;
+            }
+            
+            .memory-card .description {
+                font-size: 0.9rem;
+            }
+            
+        }
