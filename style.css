@@ -506,6 +506,10 @@
     margin: 80px 0;
     text-align: center;
 }
+.wheel-section {
+    margin: 80px 0;
+    text-align: center;
+}
 
 .wheel-title {
     font-size: 2.8rem;
@@ -617,6 +621,5 @@
 
 .claim-button:hover, .spin-again-button:hover {
     transform: translateY(-2px);
-}
-            
+}     
         }
