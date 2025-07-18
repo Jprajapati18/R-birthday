@@ -359,6 +359,11 @@ window.addEventListener('beforeunload', function() {
             });
         });
 
+// Add the styles to the page
+const styleSheet = document.createElement('style');
+styleSheet.textContent = messageButtonStyles;
+document.head.appendChild(styleSheet);
+
         // Smooth scrolling for better experience
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
