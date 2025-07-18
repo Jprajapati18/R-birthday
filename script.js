@@ -108,14 +108,16 @@ const loveMessages = [
     "You're my safe haven 🏠",
     "Love you to the moon 🌙",
     "You're my favorite person 😍",
-    "Together we're unstoppable 💪",
+    "You’re the song my heart sings. 🎶",
     "You're my happy place 😊",
     "My love for you is endless ♾️",
-    "You're my best friend 👫",
+    "I see my future in your eyes. 👀",
     "You light up my world 🌟",
     "I choose you every day 💝",
     "You're my greatest adventure 🗺️",
-    "My heart smiles for you 😄"
+    "My heart smiles for you 😄",
+    "Being with you feels like home. 🏡",
+     "I feel lucky every day because of you. 🍀"
 ];
 
 // Array of sticker image paths (add your sticker images here)
