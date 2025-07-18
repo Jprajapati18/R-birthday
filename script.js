@@ -122,12 +122,6 @@ const loveMessages = [
 const stickerImages = [
     'stickers/sticker1.png',
     'stickers/sticker2.png',
-    'stickers/sticker3.png',
-    'stickers/sticker4.png',
-    'stickers/sticker5.png',
-    'stickers/sticker6.png',
-    'stickers/sticker7.png',
-    'stickers/sticker8.png'
     // Add more sticker paths as needed
 ];
 
