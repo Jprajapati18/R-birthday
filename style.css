@@ -3,6 +3,11 @@
             padding: 0;
             box-sizing: border-box;
         }
+{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Georgia', serif;
@@ -45,6 +50,718 @@
             font-size: 1.4rem;
             color: #6b4c7a;
             font-style: italic;
+        }
+
+        .main-photo {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .photo-frame {
+            display: inline-block;
+            padding: 20px;
+            background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+            border-radius: 35px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .main-photo img {
+            max-width: 350px;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            border-radius: 25px;
+            object-fit: contain;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            display: block;
+        }
+
+        .birthday-wish {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 50px;
+            border-radius: 25px;
+            margin: 60px 0;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .birthday-wish:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .birthday-wish.clicked {
+            cursor: default;
+        }
+
+        .birthday-wish::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 182, 217, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .birthday-wish h2 {
+            font-size: 2.5rem;
+            color: #8b5a9f;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .birthday-wish p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #5a4a6a;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-prompt {
+            font-size: 1.5rem;
+            color: #8b5a9f;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .letter-content {
+            display: none;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-content.active {
+            display: block;
+        }
+
+        .typewriter-text {
+            border-right: 3px solid #8b5a9f;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #8b5a9f; }
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            min-height: 1.5em;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-style: italic;
+            color: #8b5a9f;
+            font-size: 1.3rem;
+            margin-top: 40px;
+        }
+
+        .memories-section {
+            margin: 80px 0;
+        }
+
+        .memories-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #8b5a9f;
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-card.clicked {
+            cursor: default;
+            min-height: auto;
+            display: block;
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffb6d9, #d4b5ff, #b3d9ff);
+        }
+
+        .memory-card h3 {
+            font-size: 1.5rem;
+            color: #8b5a9f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .memory-card h3.clickable {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            animation: pulse 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .memory-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .memory-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .memory-card .month-photo {
+            width: 100%;
+            min-height: 250px;
+            max-height: 350px;
+            background: linear-gradient(45deg, #ffb6d9, #d4b5ff);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .memory-card .month-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card .month-photo:hover img {
+            transform: scale(1.05);
+        }
+
+        .memory-card .month-photo.landscape {
+            height: 200px;
+        }
+
+        .memory-card .month-photo.portrait {
+            height: 300px;
+        }
+
+        .memory-card .month-photo.square {
+            height: 250px;
+        }
+
+        .memory-card .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #6b4c7a;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .memory-card .description {
+            font-size: 1rem;
+            color: #5a4a6a;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .lanterns-section {
+            text-align: center;
+            margin: 80px 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lanterns-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.2)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(255,255,255,0.15)"/><circle cx="70" cy="80" r="0.8" fill="rgba(255,255,255,0.12)"/><circle cx="30" cy="85" r="0.6" fill="rgba(255,255,255,0.18)"/></svg>') repeat;
+            animation: twinkle 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .lanterns-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .lanterns-section.clicked {
+            cursor: default;
+            min-height: 500px;
+        }
+
+        .lanterns-section h2 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .lanterns-section h2.clickable {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+            }
+            50% { 
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        .lanterns-prompt {
+            font-size: 1.3rem;
+            color: #ffd700;
+            font-style: italic;
+            margin-bottom: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .lanterns-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .lanterns-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            cursor: pointer;
+            animation: float-up 12s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .lantern-body {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1);
+            border-radius: 15px 15px 25px 25px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+            animation: lantern-glow 3s ease-in-out infinite;
+        }
+
+        .lantern-body::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 8px;
+            background: #8b4513;
+            border-radius: 10px;
+        }
+
+        .lantern-body::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 15px solid #ffd93d;
+        }
+
+        .lantern-string {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: #8b4513;
+        }
+
+        .lantern-light {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: flicker 2s ease-in-out infinite;
+        }
+
+        .lantern-message {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffd700;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .lantern:hover .lantern-message {
+            opacity: 1;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes lantern-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+            }
+            25% {
+                box-shadow: 0 0 30px rgba(255, 211, 61, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(107, 207, 127, 0.7);
+            }
+            75% {
+                box-shadow: 0 0 35px rgba(78, 205, 196, 0.6);
+            }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #8b5a9f;
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 182, 217, 0.3);
+            font-size: 20px;
+            animation: float-heart 8s infinite linear;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                margin-bottom: 40px;
+                padding: 30px 20px;
+            }
+            
+            .header h1 { 
+                font-size: 2.5rem; 
+            }
+            
+            .header p { 
+                font-size: 1.2rem; 
+            }
+            
+            .main-photo img { 
+                max-width: 280px;
+                max-height: 400px;
+            }
+            
+            .photo-frame {
+                padding: 15px;
+            }
+            
+            .birthday-wish { 
+                padding: 30px 20px;
+                margin: 40px 0;
+            }
+            
+            .birthday-wish h2 {
+                font-size: 2rem;
+            }
+            
+            .birthday-wish p {
+                font-size: 1.1rem;
+            }
+            
+            .letter-prompt {
+                font-size: 1.3rem;
+            }
+            
+            .memories-title {
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+            }
+            
+            .memory-grid { 
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .memory-card {
+                padding: 25px 20px;
+            }
+            
+            .memory-card .month-photo {
+                min-height: 200px;
+                max-height: 280px;
+            }
+            
+            .memory-card .month-photo.landscape {
+                height: 180px;
+            }
+
+            .memory-card .month-photo.portrait {
+                height: 240px;
+            }
+
+            .memory-card .month-photo.square {
+                height: 200px;
+            }
+            
+            .lanterns-section {
+                padding: 30px 20px;
+                margin: 60px 0;
+                min-height: 350px;
+            }
+            
+            .lanterns-section h2 {
+                font-size: 2rem;
+            }
+            
+            .lanterns-content {
+                height: 350px;
+            }
+            
+            .lantern {
+                width: 50px;
+                height: 70px;
+            }
+            
+            .lantern-body {
+                height: 50px;
+            }
+            
+            .lantern-message {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 { 
+                font-size: 2rem; 
+            }
+            
+            .header p { 
+                font-size: 1rem; 
+            }
+            
+            .main-photo img { 
+                max-width: 240px;
+                max-height: 320px;
+            }
+            
+            .birthday-wish { 
+                padding: 25px 15px;
+            }
+            
+            .birthday-wish h2 {
+                font-size: 1.8rem;
+            }
+            
+            .birthday-wish p {
+                font-size: 1rem;
+            }
+            
+            .letter-prompt {
+                font-size: 1.2rem;
+            }
+            
+            .memories-title {
+                font-size: 1.8rem;
+            }
+            
+            .memory-card {
+                padding: 20px 15px;
+            }
+            
+            .memory-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .memory-card .month-photo {
+                min-height: 180px;
+                max-height: 250px;
+            }
+            
+            .memory-card .month-photo.landscape {
+                height: 160px;
+            }
+
+            .memory-card .month-photo.portrait {
+                height: 220px;
+            }
+
+            .memory-card .month-photo.square {
+                height: 180px;
+            }
+            
+            .memory-card .quote {
+                font-size: 1rem;
+            }
+            
+            .memory-card .description {
+                font-size: 0.9rem;
+            }
+            
+            .lanterns-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .lanterns-content {
+                height: 300px;
+            }
+            
+            .lantern {
+                width: 40px;
+                height: 60px;
+            }
+            
+            .lantern-body {
+                height: 45px;
+            }
         }
 
         /* Sticker Animation Styles */
