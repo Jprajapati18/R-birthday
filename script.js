@@ -97,9 +97,9 @@
             });
         });
 
-// Add this JavaScript to your existing script.js file
+// Replace the lantern JavaScript with this sticker logic
 
-// Love messages for lanterns
+// Love messages for stickers (keep the same messages)
 const loveMessages = [
     "You are my sunshine ☀️",
     "Forever and always 💕",
@@ -118,97 +118,93 @@ const loveMessages = [
     "My heart smiles for you 😄"
 ];
 
-// Lantern colors
-const lanternColors = [
-    'linear-gradient(135deg, #ff6b6b, #ff8e8e)',
-    'linear-gradient(135deg, #ffd93d, #ffed4a)',
-    'linear-gradient(135deg, #6bcf7f, #84e0a3)',
-    'linear-gradient(135deg, #4ecdc4, #67d4ce)',
-    'linear-gradient(135deg, #45b7d1, #64c5ea)',
-    'linear-gradient(135deg, #96ceb4, #b3dac7)',
-    'linear-gradient(135deg, #feca57, #ffd35a)',
-    'linear-gradient(135deg, #ff9ff3, #f68de3)',
-    'linear-gradient(135deg, #a8e6cf, #c4f0d2)',
-    'linear-gradient(135deg, #ffd3a5, #ffeaa7)'
+// Array of sticker image paths (add your sticker images here)
+const stickerImages = [
+    'stickers/sticker1.png',
+    'stickers/sticker2.png',
+    'stickers/sticker3.png',
+    'stickers/sticker4.png',
+    'stickers/sticker5.png',
+    'stickers/sticker6.png',
+    'stickers/sticker7.png',
+    'stickers/sticker8.png'
+    // Add more sticker paths as needed
 ];
 
-// Create a single lantern
-function createLantern() {
-    const lantern = document.createElement('div');
-    lantern.className = 'lantern';
+// Create a single sticker
+function createSticker() {
+    const sticker = document.createElement('div');
+    sticker.className = 'sticker';
     
     // Random position
     const leftPosition = Math.random() * (window.innerWidth - 100);
-    lantern.style.left = leftPosition + 'px';
-    lantern.style.bottom = '-100px';
+    sticker.style.left = leftPosition + 'px';
+    sticker.style.bottom = '-100px';
     
     // Random delay
     const delay = Math.random() * 2;
-    lantern.style.animationDelay = delay + 's';
+    sticker.style.animationDelay = delay + 's';
     
-    // Random color
-    const randomColor = lanternColors[Math.floor(Math.random() * lanternColors.length)];
+    // Random sticker image
+    const randomSticker = stickerImages[Math.floor(Math.random() * stickerImages.length)];
     
     // Random message
     const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
     
-    lantern.innerHTML = `
-        <div class="lantern-string"></div>
-        <div class="lantern-body" style="background: ${randomColor};">
-            <div class="lantern-light"></div>
-        </div>
-        <div class="lantern-message">${randomMessage}</div>
+    sticker.innerHTML = `
+        <img src="${randomSticker}" alt="Love Sticker">
+        <div class="sticker-message">${randomMessage}</div>
     `;
     
-    return lantern;
+    return sticker;
 }
 
-// Launch lanterns function
-function launchLanterns() {
-    const lanternsContent = document.getElementById('lanternsContent');
+// Launch stickers function
+function launchStickers() {
+    const stickersContent = document.getElementById('stickersContent');
     
-    // Create multiple lanterns with staggered timing
+    // Create multiple stickers with staggered timing
     for (let i = 0; i < 8; i++) {
         setTimeout(() => {
-            const lantern = createLantern();
-            lanternsContent.appendChild(lantern);
+            const sticker = createSticker();
+            stickersContent.appendChild(sticker);
             
-            // Remove lantern after animation completes
+            // Remove sticker after animation completes
             setTimeout(() => {
-                if (lantern.parentNode) {
-                    lantern.parentNode.removeChild(lantern);
+                if (sticker.parentNode) {
+                    sticker.parentNode.removeChild(sticker);
                 }
             }, 12000);
-        }, i * 1500); // Stagger each lantern by 1.5 seconds
+        }, i * 1500); // Stagger each sticker by 1.5 seconds
     }
 }
 
-// Continuous lantern creation
-let lanternInterval;
+// Continuous sticker creation
+let stickerInterval;
 
-function startContinuousLanterns() {
-    lanternInterval = setInterval(() => {
-        const lanternsContent = document.getElementById('lanternsContent');
-        if (lanternsContent && lanternsContent.classList.contains('active')) {
-            const lantern = createLantern();
-            lanternsContent.appendChild(lantern);
+function startContinuousStickers() {
+    stickerInterval = setInterval(() => {
+        const stickersContent = document.getElementById('stickersContent');
+        if (stickersContent && stickersContent.classList.contains('active')) {
+            const sticker = createSticker();
+            stickersContent.appendChild(sticker);
             
-            // Remove lantern after animation completes
+            // Remove sticker after animation completes
             setTimeout(() => {
-                if (lantern.parentNode) {
-                    lantern.parentNode.removeChild(lantern);
+                if (sticker.parentNode) {
+                    sticker.parentNode.removeChild(sticker);
                 }
             }, 12000);
         }
-    }, 2000); // New lantern every 2 seconds
+    }, 2000); // New sticker every 2 seconds
 }
 
-// Lanterns section click functionality
-document.getElementById('lanternsSection').addEventListener('click', function() {
+// Stickers section click functionality
+document.getElementById('stickersSection').addEventListener('click', function() {
     if (!this.classList.contains('clicked')) {
-        const content = this.querySelector('.lanterns-content');
+        const content = this.querySelector('.stickers-content');
         const title = this.querySelector('h2');
-        const prompt = this.querySelector('.lanterns-prompt');
+        const prompt = this.querySelector('.stickers-prompt');
         
         // Hide title pulse and prompt, show content
         title.classList.remove('clickable');
@@ -216,25 +212,24 @@ document.getElementById('lanternsSection').addEventListener('click', function() 
         content.classList.add('active');
         this.classList.add('clicked');
         
-        // Start the lantern show
+        // Start the sticker show
         setTimeout(() => {
-            launchLanterns();
+            launchStickers();
         }, 500);
         
-        // Start continuous lanterns after initial batch
+        // Start continuous stickers after initial batch
         setTimeout(() => {
-            startContinuousLanterns();
+            startContinuousStickers();
         }, 3000);
     }
 });
 
 // Clean up interval when page is unloaded
 window.addEventListener('beforeunload', function() {
-    if (lanternInterval) {
-        clearInterval(lanternInterval);
+    if (stickerInterval) {
+        clearInterval(stickerInterval);
     }
 });
-
         // Create floating hearts animation
         function createHeart() {
             const heart = document.createElement('div');
