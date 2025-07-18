@@ -97,12 +97,9 @@
             });
         });
 
-// Enhanced lanterns functionality with messaging options
+// Add this JavaScript to your existing script.js file
 
-// Your phone number (replace with your actual number)
-const YOUR_PHONE_NUMBER = "+918000898664"; // Replace with your number in international format
-
-// Love messages for lanterns (keeping your existing messages)
+// Love messages for lanterns
 const loveMessages = [
     "You are my sunshine ☀️",
     "Forever and always 💕",
@@ -135,58 +132,7 @@ const lanternColors = [
     'linear-gradient(135deg, #ffd3a5, #ffeaa7)'
 ];
 
-// Function to send message via SMS
-function sendSMS(message) {
-    const smsBody = encodeURIComponent(`Birthday Love Message: ${message}`);
-    const smsUrl = `sms:${YOUR_PHONE_NUMBER}?body=${smsBody}`;
-    window.open(smsUrl, '_blank');
-}
-
-// Function to send message via WhatsApp
-function sendWhatsApp(message) {
-    const whatsappMessage = encodeURIComponent(`🎂 Birthday Love Message: ${message}`);
-    const whatsappUrl = `https://wa.me/${YOUR_PHONE_NUMBER.replace('+', '')}?text=${whatsappMessage}`;
-    window.open(whatsappUrl, '_blank');
-}
-
-// Function to copy message to clipboard
-function copyToClipboard(message) {
-    navigator.clipboard.writeText(message).then(() => {
-        // Show a temporary notification
-        showNotification('Message copied to clipboard!');
-    }).catch(err => {
-        console.error('Failed to copy message: ', err);
-    });
-}
-
-// Function to show notification
-function showNotification(message) {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, #4ecdc4, #67d4ce);
-        color: white;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        z-index: 1000;
-        font-family: Georgia, serif;
-        font-size: 14px;
-        animation: slideIn 0.3s ease-out;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
-}
-
-// Enhanced lantern creation with messaging options
+// Create a single lantern
 function createLantern() {
     const lantern = document.createElement('div');
     lantern.className = 'lantern';
@@ -212,30 +158,12 @@ function createLantern() {
             <div class="lantern-light"></div>
         </div>
         <div class="lantern-message">${randomMessage}</div>
-        <div class="lantern-actions">
-            <button class="message-btn whatsapp-btn" onclick="sendWhatsApp('${randomMessage}')">
-                📱 WhatsApp
-            </button>
-            <button class="message-btn sms-btn" onclick="sendSMS('${randomMessage}')">
-                💬 SMS
-            </button>
-            <button class="message-btn copy-btn" onclick="copyToClipboard('${randomMessage}')">
-                📋 Copy
-            </button>
-        </div>
     `;
-    
-    // Add click event to show actions
-    lantern.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const actions = this.querySelector('.lantern-actions');
-        actions.style.display = actions.style.display === 'flex' ? 'none' : 'flex';
-    });
     
     return lantern;
 }
 
-// Launch lanterns function (keeping your existing logic)
+// Launch lanterns function
 function launchLanterns() {
     const lanternsContent = document.getElementById('lanternsContent');
     
@@ -251,7 +179,7 @@ function launchLanterns() {
                     lantern.parentNode.removeChild(lantern);
                 }
             }, 12000);
-        }, i * 1500);
+        }, i * 1500); // Stagger each lantern by 1.5 seconds
     }
 }
 
@@ -272,7 +200,7 @@ function startContinuousLanterns() {
                 }
             }, 12000);
         }
-    }, 2000);
+    }, 2000); // New lantern every 2 seconds
 }
 
 // Lanterns section click functionality
@@ -358,11 +286,6 @@ window.addEventListener('beforeunload', function() {
                 }
             });
         });
-
-// Add the styles to the page
-const styleSheet = document.createElement('style');
-styleSheet.textContent = messageButtonStyles;
-document.head.appendChild(styleSheet);
 
         // Smooth scrolling for better experience
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
