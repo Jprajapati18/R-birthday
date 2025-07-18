@@ -757,4 +757,76 @@
             .lantern-body {
                 height: 45px;
             }
+// Add CSS styles for the new buttons
+const messageButtonStyles = `
+    .lantern-actions {
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 20;
+    }
+    
+    .message-btn {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        min-width: 80px;
+    }
+    
+    .whatsapp-btn:hover {
+        background: #25D366;
+        transform: scale(1.05);
+    }
+    
+    .sms-btn:hover {
+        background: #007AFF;
+        transform: scale(1.05);
+    }
+    
+    .copy-btn:hover {
+        background: #FF6B6B;
+        transform: scale(1.05);
+    }
+    
+    .notification {
+        animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    /* Mobile responsiveness for message buttons */
+    @media (max-width: 768px) {
+        .message-btn {
+            padding: 6px 10px;
+            font-size: 0.7rem;
+            min-width: 70px;
+        }
+        
+        .lantern-actions {
+            bottom: -70px;
+            gap: 6px;
+        }
+    }
+
+
+                    
         }
