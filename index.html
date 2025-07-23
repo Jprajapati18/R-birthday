@@ -7,189 +7,208 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hearts" id="hearts"></div>
-    
-    <div class="container">
-        <div class="header">
-            <h1>Happy Birthday My Partner! 💕</h1>
-            <p>To the most beautiful soul in my life</p>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-form">
+            <h2>💕 Access Required 💕</h2>
+            <p>Enter the secret to view this special surprise</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter the secret word" required>
+                </div>
+                <button type="submit" class="login-btn">Enter 💖</button>
+            </form>
+            <div class="error-message" id="errorMessage"></div>
         </div>
-
-        <div class="main-photo">
-            <div class="photo-frame">
-                <img src="photos/main-photo.jpeg" alt="My Beautiful Fiancé">
-            </div>
-        </div>
-
-        <div class="birthday-wish" id="birthdayWish">
-            <h2>My Dearest Love 💖</h2>
-            
-            <div class="letter-prompt" id="letterPrompt">
-                💌 Click to read my heartfelt letter 💌
-            </div>
-            
-            <div class="letter-content" id="letterContent">
-                <p id="paragraph1"></p>
-                <p id="paragraph2"></p>
-                <p id="paragraph3"></p>
-                <p id="paragraph4"></p>
-                <p id="paragraph5"></p>
-                <div class="letter-signature" id="signature"></div>
-            </div>
-        </div>
-
-        <div class="memories-section">
-            <h2 class="memories-title">The Road We Travel Together 🌟</h2>
-            <div class="memory-grid">
-
-                 <div class="memory-card" data-month="August">
-                    <h3 class="clickable">August 2024 🍂</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/august-2024.jpeg" alt="August 2024 Memory">
-                        </div>
-                        <p class="quote">"The Beginning of This Chapter"</p>
-                        <p class="description">This month marked a quiet beginning, like the first page of a favorite book. We laughed more than we planned, and the way you looked at me—soft and certain—made me realize we were building something timeless.</p>
-                    </div>
-                </div>
-                
-                <div class="memory-card" data-month="september">
-                    <h3 class="clickable">September 2024 🍁</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/september-2024.jpeg" alt="September 2024 Memory">
-                        </div>
-                        <p class="quote">"Where Peace Found Me"</p>
-                        <p class="description">That day, when you rested your head on my shoulder for the first time, the world around us softened. In that simple moment, the chaos faded—and I felt something rare. I found peace, calm, and a quiet kind of magic. It felt like home… and that home was you.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="october">
-                    <h3 class="clickable">October 2024 🤝</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/october-2024.jpeg" alt="October 2024 Memory">
-                        </div>
-                        <p class="quote">"The First Touch in a Sea of Music"</p>
-                        <p class="description">Amid the colors, music, and heartbeat of the garba night, something unforgettable happened—I held your hand for the first time. In that one small gesture, my whole world shifted. Your hand in mine felt like a promise, like fate whispered, “This is just the beginning.” That night, among a thousand twirls and lights, you became my favorite moment.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="november">
-                    <h3 class="clickable">November 2024 🦋</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/november-2024.jpeg" alt="November 2024 Memory">
-                        </div>
-                        <p class="quote">"When Time Stood Still."</p>
-                        <p class="description">There are moments in life that don’t need words—just silence, a glance, and the closeness of two hearts that finally speak the same language. November was full of those quiet shifts… soft moments that didn’t ask for attention but meant everything. Somewhere in the stillness, something deeper began to grow—unspoken, steady, and beautifully real.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="december">
-                    <h3 class="clickable">December 2024 ❄️</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/december-2024.jpeg" alt="December 2024 Memory">
-                        </div>
-                        <p class="quote">"Love in the Walls."</p>
-                        <p class="description">Amid quiet beginnings and the promise of something new, we stood side by side—our hands filled with hopes and our hearts brimming with something real. That’s when we finally said it, the words that had been living in every glance: "I love you." It wasn’t just the start of a home, it was the beginning of forever—spoken softly, but built to last.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="january">
-                    <h3 class="clickable">January 2025 🌟</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/january-2025.jpeg" alt="January 2025 Memory">
-                        </div>
-                        <p class="quote">"Under Stars and Blessings"</p>
-                        <p class="description">January felt like a gentle celebration of us—quiet night, your laughter lighting up the air, and moments that made my birthday feel extra special just because you were there. We stood in the stillness of the temple too, hands folded and hearts full, asking for nothing more than to keep walking this path—together. It was a beginning wrapped in love, light, and silent prayers.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="february">
-                    <h3 class="clickable">February 2025 💕</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/february-2025.jpeg" alt="February 2025 Memory">
-                        </div>
-                        <p class="quote">"Quiet Care, Loud Love"</p>
-                        <p class="description">Sometimes love doesn’t need grand gestures—it speaks in gentle hands and quiet comfort. That evening, as I massaged your head and watched the day’s weight slowly fade from your face, I realized how deeply I loved taking care of you. In that stillness, without a single word, I felt something stronger than a thousand promises: the joy of simply being there for you.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="march">
-                    <h3 class="clickable">March 2025 🌺</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/march-2025.jpeg" alt="March 2025 Memory">
-                        </div>
-                        <p class="quote">"Miles for a Moment"</p>
-                        <p class="description">I traveled miles, not just across cities but toward you—and every second was worth it. That quiet day we spent together, away from the noise of the world, felt like a soft exhale. Nothing loud, nothing rushed—just time, warmth, and the quiet joy of being near you. Sometimes, the most beautiful days are the simplest ones… and that day, being with you, felt like peace in motion.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="april">
-                    <h3 class="clickable">April 2025 🌈</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/april-2025.jpeg" alt="April 2025 Memory">
-                        </div>
-                        <p class="quote">"Love Across the Screen."</p>
-                        <p class="description">Though miles stood between us, they never stood in the way. This month was filled with late-night video calls, sleepy smiles, long talks that drifted into laughter—and sometimes little fights that only proved how much we cared. Even through a screen, I felt close to you. We didn’t just talk, we held each other with words, with patience, with love that stretched beyond distance.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="may">
-                    <h3 class="clickable">May 2025 🌻</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/may-2025.jpeg" alt="May 2025 Memory">
-                        </div>
-                        <p class="quote">"Simple Days, Golden Hours."</p>
-                        <p class="description">There was something unspoken about the way May unfolded—easy, light, and quietly special. We spent the day without a script… just a friendly match, familiar smiles, and a ride that meant more than it showed. I didn’t need a reason to be there—only you. And in that simplicity, I felt the kind of closeness that words never quite capture.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="june">
-                    <h3 class="clickable">June 2025 🌧️</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/june-2025.jpeg" alt="June 2025 Memory">
-                        </div>
-                        <p class="quote">"Rain, Roads, and Us."</p>
-                        <p class="description">The skies opened, and with the first rain came a thousand little joys. We welcomed the monsoon with car windows slightly down, music playing soft, and hearts wide open. The scent of wet earth, your laugh echoing inside the car, and a quiet walk through the garden—everything felt drenched in magic. In every drop, in every breeze, I found more reasons to fall for you all over again.</p>
-                    </div>
-                </div>
-
-                <div class="memory-card" data-month="july">
-                    <h3 class="clickable">july 2025 🎂</h3>
-                    <div class="memory-content">
-                        <div class="month-photo">
-                            <img src="photos/july-2025.jpeg" alt="july 2025 Memory">
-                        </div>
-                        <p class="quote">"The Day You Came Into This World.🎂"</p>
-                        <p class="description">And finally, it’s your day—the one I’m most grateful for, because it gave the world you. I’ve never been great at celebrations, but for you, I wanted to try… to make it more than just another birthday. I hope, in all the little things I did, you felt how deeply you’re loved. Because today isn't just about cake or candles—it’s about honoring the heart that’s become my home.</p>
-                    </div>
-                </div> 
-                
-            </div>
-        </div>
-
-<!-- Replace the lanterns-section div with this -->
-
-<div class="stickers-section" id="stickersSection">
-    <h2 class="clickable">Spread the Love 💖 </h2>
-    <p class="stickers-prompt">🌟 Tap for a sweet surprise 🎁 🌟</p>
-    <div class="stickers-content" id="stickersContent">
-        <!-- Stickers will be dynamically created here -->
     </div>
-</div>
 
-        <div class="footer">
-            Forever yours, with all my love 💕<br>
-            Happy Birthday, Beautiful! 🎂✨
+    <!-- Wrap existing main content -->
+    <div class="main-content" id="mainContent">
+        <div class="hearts" id="hearts"></div>
+        
+        <div class="container">
+            <div class="header">
+                <h1>Happy Birthday My Partner! 💕</h1>
+                <p>To the most beautiful soul in my life</p>
+            </div>
+
+            <div class="main-photo">
+                <div class="photo-frame">
+                    <img src="photos/main-photo.jpeg" alt="My Beautiful Fiancé">
+                </div>
+            </div>
+
+            <div class="birthday-wish" id="birthdayWish">
+                <h2>My Dearest Love 💖</h2>
+                
+                <div class="letter-prompt" id="letterPrompt">
+                    💌 Click to read my heartfelt letter 💌
+                </div>
+                
+                <div class="letter-content" id="letterContent">
+                    <p id="paragraph1"></p>
+                    <p id="paragraph2"></p>
+                    <p id="paragraph3"></p>
+                    <p id="paragraph4"></p>
+                    <p id="paragraph5"></p>
+                    <div class="letter-signature" id="signature"></div>
+                </div>
+            </div>
+
+            <div class="memories-section">
+                <h2 class="memories-title">The Road We Travel Together 🌟</h2>
+                <div class="memory-grid">
+
+                     <div class="memory-card" data-month="August">
+                        <h3 class="clickable">August 2024 🍂</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/august-2024.jpeg" alt="August 2024 Memory">
+                            </div>
+                            <p class="quote">"The Beginning of This Chapter"</p>
+                            <p class="description">This month marked a quiet beginning, like the first page of a favorite book. We laughed more than we planned, and the way you looked at me—soft and certain—made me realize we were building something timeless.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="memory-card" data-month="september">
+                        <h3 class="clickable">September 2024 🍁</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/september-2024.jpeg" alt="September 2024 Memory">
+                            </div>
+                            <p class="quote">"Where Peace Found Me"</p>
+                            <p class="description">That day, when you rested your head on my shoulder for the first time, the world around us softened. In that simple moment, the chaos faded—and I felt something rare. I found peace, calm, and a quiet kind of magic. It felt like home… and that home was you.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="october">
+                        <h3 class="clickable">October 2024 🤝</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/october-2024.jpeg" alt="October 2024 Memory">
+                            </div>
+                            <p class="quote">"The First Touch in a Sea of Music"</p>
+                            <p class="description">Amid the colors, music, and heartbeat of the garba night, something unforgettable happened—I held your hand for the first time. In that one small gesture, my whole world shifted. Your hand in mine felt like a promise, like fate whispered, "This is just the beginning." That night, among a thousand twirls and lights, you became my favorite moment.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="november">
+                        <h3 class="clickable">November 2024 🦋</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/november-2024.jpeg" alt="November 2024 Memory">
+                            </div>
+                            <p class="quote">"When Time Stood Still."</p>
+                            <p class="description">There are moments in life that don't need words—just silence, a glance, and the closeness of two hearts that finally speak the same language. November was full of those quiet shifts… soft moments that didn't ask for attention but meant everything. Somewhere in the stillness, something deeper began to grow—unspoken, steady, and beautifully real.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="december">
+                        <h3 class="clickable">December 2024 ❄️</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/december-2024.jpeg" alt="December 2024 Memory">
+                            </div>
+                            <p class="quote">"Love in the Walls."</p>
+                            <p class="description">Amid quiet beginnings and the promise of something new, we stood side by side—our hands filled with hopes and our hearts brimming with something real. That's when we finally said it, the words that had been living in every glance: "I love you." It wasn't just the start of a home, it was the beginning of forever—spoken softly, but built to last.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="january">
+                        <h3 class="clickable">January 2025 🌟</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/january-2025.jpeg" alt="January 2025 Memory">
+                            </div>
+                            <p class="quote">"Under Stars and Blessings"</p>
+                            <p class="description">January felt like a gentle celebration of us—quiet night, your laughter lighting up the air, and moments that made my birthday feel extra special just because you were there. We stood in the stillness of the temple too, hands folded and hearts full, asking for nothing more than to keep walking this path—together. It was a beginning wrapped in love, light, and silent prayers.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="february">
+                        <h3 class="clickable">February 2025 💕</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/february-2025.jpeg" alt="February 2025 Memory">
+                            </div>
+                            <p class="quote">"Quiet Care, Loud Love"</p>
+                            <p class="description">Sometimes love doesn't need grand gestures—it speaks in gentle hands and quiet comfort. That evening, as I massaged your head and watched the day's weight slowly fade from your face, I realized how deeply I loved taking care of you. In that stillness, without a single word, I felt something stronger than a thousand promises: the joy of simply being there for you.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="march">
+                        <h3 class="clickable">March 2025 🌺</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/march-2025.jpeg" alt="March 2025 Memory">
+                            </div>
+                            <p class="quote">"Miles for a Moment"</p>
+                            <p class="description">I traveled miles, not just across cities but toward you—and every second was worth it. That quiet day we spent together, away from the noise of the world, felt like a soft exhale. Nothing loud, nothing rushed—just time, warmth, and the quiet joy of being near you. Sometimes, the most beautiful days are the simplest ones… and that day, being with you, felt like peace in motion.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="april">
+                        <h3 class="clickable">April 2025 🌈</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/april-2025.jpeg" alt="April 2025 Memory">
+                            </div>
+                            <p class="quote">"Love Across the Screen."</p>
+                            <p class="description">Though miles stood between us, they never stood in the way. This month was filled with late-night video calls, sleepy smiles, long talks that drifted into laughter—and sometimes little fights that only proved how much we cared. Even through a screen, I felt close to you. We didn't just talk, we held each other with words, with patience, with love that stretched beyond distance.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="may">
+                        <h3 class="clickable">May 2025 🌻</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/may-2025.jpeg" alt="May 2025 Memory">
+                            </div>
+                            <p class="quote">"Simple Days, Golden Hours."</p>
+                            <p class="description">There was something unspoken about the way May unfolded—easy, light, and quietly special. We spent the day without a script… just a friendly match, familiar smiles, and a ride that meant more than it showed. I didn't need a reason to be there—only you. And in that simplicity, I felt the kind of closeness that words never quite capture.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="june">
+                        <h3 class="clickable">June 2025 🌧️</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/june-2025.jpeg" alt="June 2025 Memory">
+                            </div>
+                            <p class="quote">"Rain, Roads, and Us."</p>
+                            <p class="description">The skies opened, and with the first rain came a thousand little joys. We welcomed the monsoon with car windows slightly down, music playing soft, and hearts wide open. The scent of wet earth, your laugh echoing inside the car, and a quiet walk through the garden—everything felt drenched in magic. In every drop, in every breeze, I found more reasons to fall for you all over again.</p>
+                        </div>
+                    </div>
+
+                    <div class="memory-card" data-month="july">
+                        <h3 class="clickable">july 2025 🎂</h3>
+                        <div class="memory-content">
+                            <div class="month-photo">
+                                <img src="photos/july-2025.jpeg" alt="july 2025 Memory">
+                            </div>
+                            <p class="quote">"The Day You Came Into This World.🎂"</p>
+                            <p class="description">And finally, it's your day—the one I'm most grateful for, because it gave the world you. I've never been great at celebrations, but for you, I wanted to try… to make it more than just another birthday. I hope, in all the little things I did, you felt how deeply you're loved. Because today isn't just about cake or candles—it's about honoring the heart that's become my home.</p>
+                        </div>
+                    </div> 
+                    
+                </div>
+            </div>
+
+    <!-- Replace the lanterns-section div with this -->
+
+    <div class="stickers-section" id="stickersSection">
+        <h2 class="clickable">Spread the Love 💖 </h2>
+        <p class="stickers-prompt">🌟 Tap for a sweet surprise 🎁 🌟</p>
+        <div class="stickers-content" id="stickersContent">
+            <!-- Stickers will be dynamically created here -->
+        </div>
+    </div>
+
+            <div class="footer">
+                Forever yours, with all my love 💕<br>
+                Happy Birthday, Beautiful! 🎂✨
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
