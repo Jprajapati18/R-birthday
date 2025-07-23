@@ -225,7 +225,47 @@ document.getElementById('stickersSection').addEventListener('click', function() 
         }, 3000);
     }
 });
+// Login Logic
+const correctPassword = "yourbirthday"; // Change this to your desired password
 
+// Check if user is already logged in
+document.addEventListener('DOMContentLoaded', function() {
+    const isAuthenticated = sessionStorage.getItem('authenticated');
+    
+    if (isAuthenticated === 'true') {
+        showMainContent();
+    } else {
+        showLoginForm();
+    }
+});
+
+// Login form submission
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('errorMessage');
+    
+    if (password === correctPassword) {
+        // Correct password
+        sessionStorage.setItem('authenticated', 'true');
+        showMainContent();
+    } else {
+        // Wrong password
+        errorMessage.textContent = 'Incorrect password. Try again! 💔';
+        document.getElementById('password').value = '';
+    }
+});
+
+function showLoginForm() {
+    document.getElementById('loginContainer').style.display = 'flex';
+    document.querySelector('.container').style.display = 'none';
+}
+
+function showMainContent() {
+    document.getElementById('loginContainer').style.display = 'none';
+    document.querySelector('.container').style.display = 'block';
+}
 // Clean up interval when page is unloaded
 window.addEventListener('beforeunload', function() {
     if (stickerInterval) {
